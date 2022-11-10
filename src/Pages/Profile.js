@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-// import Link from '../components/Link';
-// import './Profile.css';
+import Link from '../components/Link';
+import './Profile.css';
 
 function Profile({ userName }) {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ function Profile({ userName }) {
       const profile = await fetch(
         `https://api.github.com/users/${userName}`);
       const result = await profile.json();
-    // console.log(profile);
+   console.log(result);
      if (result) {
     setProfile(result);
      setLoading(false);
@@ -24,14 +24,34 @@ function Profile({ userName }) {
       {loading ? (
             <span>Loading...</span>
       ) : (
-        
+        <div>
+        <img
+        className='Profile-avatar'
+        src={profile.avatar_url}
+        alt={profile.login}
+        />
        <ul>
-       <li><span>avatar_url: </span>
-            {profile.avatar_url}</li>
-
-        <li><span>name: </span> 
+  
+        <li><span>Username: </span> 
             {profile.login}</li>
+
+          <li>
+            <span>Repos: </span>
+            <Link url={profile.repos_url}
+            title={profile.repos_url} />
+          </li>
+
+          <li>
+             <span>Profile url: </span>
+             <Link url={profile.html_url}
+               title={profile.html_url} />
+           </li>
+
+            <li><span>Date created: </span>
+            {profile.created_at}</li>
        </ul>
+</div>
+       
 
         )}
       
