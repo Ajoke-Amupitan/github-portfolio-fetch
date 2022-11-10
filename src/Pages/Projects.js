@@ -21,7 +21,7 @@ function Projects({ userName }) {
 
   return (
     <div className='Projects-container'>
-      <h2>Projects</h2>
+      <h2>Repositories</h2>
       {loading ? (
         <span>Loading...</span>
       ) : (

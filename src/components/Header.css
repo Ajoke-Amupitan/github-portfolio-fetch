@@ -9,6 +9,11 @@
     color: white;
   }
   
- 
+.App-header > nav {
+      margin-bottom: 10px;
+     }
+.App-header > nav > .App-link {
+       margin-right: 10px;
+     }
   
  
