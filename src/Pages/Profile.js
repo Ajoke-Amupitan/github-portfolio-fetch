@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import Link from '../components/Link';
 import './Profile.css';
+import List from '../components/List';
 
 function Profile({ userName }) {
+  
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState({});
   useEffect(() => {
@@ -18,6 +20,31 @@ function Profile({ userName }) {
     }
     fetchData();
   }, [userName]);
+
+  const items = [
+
+    {
+     field: 'Username', value: profile.login
+     
+    },
+  
+     {
+       field: 'Repos',
+        value: <Link url={profile.repos_url}
+           title={profile.repos_url} />,
+     },
+  
+      {
+        field: 'Profile url',
+       value: <Link url={profile.html_url} 
+            title={profile.html_url} />,
+     },
+  
+     {
+       field: 'Date created', value: profile.created_at
+      },
+    ];
+
   return (
     <div className='Profile-container'>
         <h2>About me</h2>
@@ -30,26 +57,7 @@ function Profile({ userName }) {
         src={profile.avatar_url}
         alt={profile.login}
         />
-       <ul>
-  
-        <li><span>Username: </span> 
-            {profile.login}</li>
-
-          <li>
-            <span>Repos: </span>
-            <Link url={profile.repos_url}
-            title={profile.repos_url} />
-          </li>
-
-          <li>
-             <span>Profile url: </span>
-             <Link url={profile.html_url}
-               title={profile.html_url} />
-           </li>
-
-            <li><span>Date created: </span>
-            {profile.created_at}</li>
-       </ul>
+        <List items={items} />  
 </div>
        
 
