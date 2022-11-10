@@ -1,9 +1,8 @@
 import './Header.css';
 
-function Header({logo}) {
+function Header() {
     return (
         <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <h1>My Github Portfolio</h1>
       </header>
     );
