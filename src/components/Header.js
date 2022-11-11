@@ -13,6 +13,9 @@ function Header() {
          <RouterLink to='/projects' className='App-link'>
            Repositories
          </RouterLink>
+         {/* <RouterLink to='/projects/:name' className='App-link'>
+           Repos Detail
+         </RouterLink> */}
        </nav>
       </header>
     );

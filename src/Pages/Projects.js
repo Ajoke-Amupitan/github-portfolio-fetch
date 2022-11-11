@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Link from '../components/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import List from '../components/List';
+
 function Projects({ userName }) {
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState({});
@@ -19,18 +21,21 @@ function Projects({ userName }) {
     fetchData();
   }, [userName]);
 
+ 
+
   return (
     <div className='Projects-container'>
       <h2>Repositories</h2>
       {loading ? (
         <span>Loading...</span>
       ) : (
-        <div>
+        <div className='project-items'>
+
           <List items={projects.map((project) => ({
             field: project.name,
-            value: <Link url={project.html_url}
-            title={project.html_url} />,
-  }))} />
+            value: <RouterLink url={project.name}
+            title={project.name} />,
+              }))} />
         </div>
       )}
     </div>

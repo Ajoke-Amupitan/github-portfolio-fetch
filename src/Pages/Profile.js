@@ -4,7 +4,7 @@ import './Profile.css';
 import List from '../components/List';
 
 function Profile({ userName }) {
-  
+
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState({});
   useEffect(() => {
@@ -12,7 +12,6 @@ function Profile({ userName }) {
       const profile = await fetch(
         `https://api.github.com/users/${userName}`);
       const result = await profile.json();
-   console.log(result);
      if (result) {
     setProfile(result);
      setLoading(false);
@@ -30,8 +29,7 @@ function Profile({ userName }) {
   
      {
        field: 'Repos',
-        value: <Link url={profile.repos_url}
-           title={profile.repos_url} />,
+        value: profile.public_repos
      },
   
       {
